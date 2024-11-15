@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <!-- Display user's cash -->
+        <div class="mb-3">
+            Your cash: {{ cash | usd }}
+        </div>
+        <!-- Sell form -->
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name="symbol">
+                <option disabled selected value="">Stock</option>
+                {% for i in range(length) %}
+                    <option value="{{ portofolio[i][0] }}">{{ portofolio[i][0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number">
+        </div>
+            <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Shares</th>
+                    <th>Quote</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(length) %}
+                <tr>
+                    <td>{{ portofolio[i][0] }}</td>
+                    <td>{{ portofolio[i][1] }}</td>
+                    <td>{{ unit[i] | usd }}</td>
+                    <td>{{ total[i] | usd }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th>Cash:</th>
+                    <td>{{ cash | usd }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <th>TOTAL:</th>
+                    <td>{{ subtotal | usd }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <form action="/" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="money" placeholder="Add more cash $$" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+{% endblock %}

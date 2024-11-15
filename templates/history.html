@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Shares</th>
+                    <th>Quote</th>
+                    <th>Total</th>
+                    <th>Transacted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in history %}
+                <tr>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                    <td>{{ i[3] | usd }}</td>
+                    <td>{{ i[4] | usd }}</td>
+                    <td>{{ i[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
